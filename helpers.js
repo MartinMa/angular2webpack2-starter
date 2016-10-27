@@ -1,11 +1,12 @@
 /**
- * @author: @AngularClass
+ * @authors: @qdouble and @AngularClass
  */
 
-var path = require('path');
+const path = require('path');
+const fs = require('fs');
 
 // Helper functions
-var _root = path.resolve(__dirname, '..');
+const _root = path.resolve(__dirname);
 
 function checkNodeImport(context, request, cb) {
   if (!path.isAbsolute(request) && request.charAt(0) !== '.') {
@@ -15,7 +16,7 @@ function checkNodeImport(context, request, cb) {
 }
 
 function includeClientPackages(packages) {
-  return function(context, request, cb) {
+  return function (context, request, cb) {
     if (packages && packages.indexOf(request) !== -1) {
       return cb();
     }
@@ -32,8 +33,14 @@ function root(args) {
   return path.join.apply(path, [_root].concat(args));
 }
 
+function testDll() {
+  if (!fs.existsSync('./dll/polyfill.dll.js') || !fs.existsSync('./dll/vendor.dll.js')) {
+    throw "DLL files do not exist, please use 'npm run build:dll' once to generate dll files.";
+  }
+};
+
 exports.checkNodeImport;
 exports.includeClientPackages = includeClientPackages;
 exports.hasProcessFlag = hasProcessFlag;
 exports.root = root;
-
+exports.testDll = testDll;

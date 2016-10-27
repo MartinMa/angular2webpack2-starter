@@ -7,21 +7,23 @@
     "pretty": false,
     "sourceMap": true,
     "lib": ["es5", "dom"],
+    "noEmit": true,
     "strictNullChecks": false,
     "skipDefaultLibCheck": true,
-    "outDir": "output",
     "typeRoots": [
       "node_modules/@types"
     ]
   },
   "exclude": [
     "node_modules",
+    "src/compiled",
     "src/**/*.e2e.ts",
     "src/**/*.spec.ts",
     "src/server.ts",
+    "src/main.browser.ts",
     "src/main.browser.aot.ts",
+    "src/main.browser.universal.aot.ts",
     "src/app/app.module.ts",
-    "src/app/app.module.universal.browser.ts",
     "src/app/app.module.universal.node.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
@@ -34,6 +36,6 @@
   "atom": { "rewriteTsconfig": false },
   "angularCompilerOptions": {
    "genDir": "src/compiled",
-   "debug": true
+   "skipMetadataEmit" : true
  }
 }

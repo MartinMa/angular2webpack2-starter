@@ -8,8 +8,8 @@ import { StoreDevToolsComponent } from './store-devtools.component';
 
 const IMPORTS = [];
 // Enable ngrx/devtools in dev mode
-if (ENV === 'development' &&
-  ['monitor', 'both'].includes(STORE_DEV_TOOLS)
+if (ENV === 'development' && !AOT &&
+  ['monitor', 'both'].includes(STORE_DEV_TOOLS) // set in constants.js file in project root
 ) IMPORTS.push(...[
   StoreDevtoolsModule.instrumentStore({
     monitor: useLogMonitor({

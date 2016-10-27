@@ -7,9 +7,9 @@
     "pretty": false,
     "sourceMap": true,
     "lib": ["es5", "dom"],
+    "noEmit": true,
     "strictNullChecks": false,
     "skipDefaultLibCheck": true,
-    "outDir": "output",
     "typeRoots": [
       "node_modules/@types"
     ]
@@ -22,6 +22,7 @@
     "src/server.ts",
     "src/main.browser.aot.ts",
     "src/main.browser.universal.ts",
+    "src/main.browser.universal.aot.ts",
     "src/app/app.module.universal.browser.ts",
     "src/app/app.module.universal.node.ts"
   ],
@@ -35,6 +36,6 @@
   "atom": { "rewriteTsconfig": false },
   "angularCompilerOptions": {
    "genDir": "src/compiled",
-   "debug": true
+   "skipMetadataEmit" : true
  }
 }

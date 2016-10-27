@@ -1,6 +1,6 @@
 import { AfterContentInit, Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MdSidenav } from '@angular2-material/sidenav';
+import { MdSidenav } from '@angular/material';
 
 import { views } from './app-nav-views';
 import { MOBILE } from './services/constants';
@@ -12,8 +12,8 @@ import { MOBILE } from './services/constants';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements AfterContentInit {
-  showMonitor = (ENV === 'development' &&
-    ['monitor', 'both'].includes(STORE_DEV_TOOLS)
+  showMonitor = (ENV === 'development' && !AOT &&
+    ['monitor', 'both'].includes(STORE_DEV_TOOLS) // set in constants.js file in project root
   );
   mobile = MOBILE;
   sideNavMode = MOBILE ? 'over' : 'side';
